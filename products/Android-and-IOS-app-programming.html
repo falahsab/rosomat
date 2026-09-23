@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="h-100">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>برمجة تطبيقات الاندرويد و IOS - اطلب الآن | رسومات الرقمية</title>
+  <meta name="description" content="نقدم لك خبرتنا الواسعة في تطوير التطبيقات لنظامي التشغيل الأندرويد وiOS باستخدام أحدث التقنيات وأدوات التطوير المبتكرة | رسومات الرقمية">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/8dce714f-9120-4a65-9638-e792d4561cf0-32x32.png" type="image/x-icon">
+  
+  <!-- Google Fonts - Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  
+  <!-- Custom Theme CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="d-flex flex-column h-100">
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="flex-grow-1 text-center">
+        <span>حكايتنا لم تنتهي بعد 🚀 | خصومات وعروض حصرية على كافة الخدمات الرقمية</span>
+      </div>
+      <span class="ti ti-x close-announcement fs-5" onclick="document.getElementById('announcementBar').style.display='none';" title="إغلاق"></span>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="navbar-main sticky-top">
+    <div class="container d-flex justify-content-between align-items-center gap-3">
+      
+      <!-- Brand Logo -->
+      <a class="navbar-brand m-0" href="../index.html" title="رسومات الرقمية">
+        <img src="https://media.zid.store/cdn-cgi/image/w=200,q=100/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/404f05f8-2200-41f2-9848-4dcc76f08971-200x.png" alt="رسومات الرقمية">
+        <span>رسومات الرقمية</span>
+      </a>
+
+      <!-- Quick Back to Products -->
+      <a href="../index.html" class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1">
+        <i class="ti ti-arrow-right"></i>
+        <span>العودة لجميع المنتجات</span>
+      </a>
+
+      <!-- Action Items & Currency Selector -->
+      <div class="d-flex align-items-center gap-2">
+        <!-- Currency Selector -->
+        <button type="button" class="currency-badge" data-bs-toggle="modal" data-bs-target="#currencyModal" title="تغيير العملة">
+          <i class="ti ti-coin"></i>
+          <span class="current-currency-text">ريال سعودي (SAR)</span>
+        </button>
+
+        <!-- Admin Dashboard Link -->
+        <a href="../admin.html" class="btn btn-sm btn-outline-primary d-inline-flex align-items-center gap-1" title="لوحة التحكم">
+          <i class="ti ti-dashboard"></i>
+          <span class="d-none d-lg-inline">لوحة التحكم</span>
+        </a>
+
+        <!-- WhatsApp Direct Contact -->
+        <a href="https://wa.me/966550463239" target="_blank" class="nav-action-btn" title="تواصل عبر الواتساب">
+          <i class="ti ti-brand-whatsapp fs-5 text-success"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="bg-light border-bottom">
+    <div class="container product-breadcrumb">
+      <a href="../index.html">الرئيسية</a>
+      <span class="mx-2 text-muted">/</span>
+      <a href="../index.html">برمجة المواقع والتطبيقات</a>
+      <span class="mx-2 text-muted">/</span>
+      <span class="text-primary fw-bold">برمجة تطبيقات الاندرويد و IOS</span>
+    </div>
+  </div>
+
+  <!-- Product Details Section -->
+  <main class="product-details-container flex-grow-1">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        
+        <!-- Right Column: Product Image Gallery -->
+        <div class="col-12 col-lg-6 order-0 order-lg-1">
+          <div class="product-gallery-box shadow-sm sticky-lg-top">
+            <span class="badge-tag hot" style="top: 18px; right: 18px; font-size: 0.85rem;">
+              <i class="ti ti-flame"></i> يباع سريعًا
+            </span>
+            <img id="product-main-img" src="https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png" alt="خدمة إنشاء تطبيق أندرويد و IOS - رسومات الرقمية">
+            <div class="product-thumbnails-row">
+              <div class="product-thumb-item active" onclick="switchProductImage('https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png', this)">
+                <img src="https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png" alt="صورة 1">
+              </div>
+              <div class="product-thumb-item" onclick="switchProductImage('https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/ea716e10-befe-4a77-a7a8-e8ecf7172f6e.png', this)">
+                <img src="https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/ea716e10-befe-4a77-a7a8-e8ecf7172f6e.png" alt="صورة 2">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Column: Product Information & Order Actions -->
+        <div class="col-12 col-lg-6 order-1 order-lg-0">
+          
+          <!-- Product Title & Meta Card -->
+          <div class="product-meta-card">
+            
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h1 class="product-page-title m-0">برمجة تطبيقات الاندرويد و IOS</h1>
+              
+              <!-- Share Menu Dropdown -->
+              <div class="dropdown share-dropdown">
+                <button class="btn btn-sm btn-outline-secondary rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="مشاركة المنتج">
+                  <i class="ti ti-share fs-5"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                  <li><a class="dropdown-item" id="share-whatsapp" href="#" target="_blank"><i class="ti ti-brand-whatsapp text-success"></i> واتساب</a></li>
+                  <li><a class="dropdown-item" id="share-telegram" href="#" target="_blank"><i class="ti ti-brand-telegram text-primary"></i> تليجرام</a></li>
+                  <li><a class="dropdown-item" id="share-x" href="#" target="_blank"><i class="ti ti-brand-x"></i> تويتر (X)</a></li>
+                  <li><a class="dropdown-item" id="share-facebook" href="#" target="_blank"><i class="ti ti-brand-facebook text-primary"></i> فيسبوك</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="javascript:void(0)" onclick="copyPageUrl()"><i class="ti ti-copy"></i> نسخ الرابط</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- SKU & Category Badges -->
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+              <span class="product-sku-badge" onclick="copySku('R3')" style="cursor: pointer;" title="انقر للنسخ">
+                <i class="ti ti-barcode"></i> رمز المنتج: <strong>R3</strong> <i class="ti ti-copy ms-1"></i>
+              </span>
+              <span class="badge bg-light text-muted border">
+                <i class="ti ti-tag text-primary"></i> برمجة المواقع والتطبيقات
+              </span>
+              <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2 py-1">
+                <i class="ti ti-tag"></i> الماركة: <strong>رسومات</strong>
+              </span>
+            </div>
+
+            <!-- Price Display Card -->
+            <div class="product-price-box">
+              <div>
+                <div class="small text-muted fw-bold mb-1">السعر الإجمالي المعتمد:</div>
+                <div class="product-price-main" id="dynamic-product-price">15,000.00 ر.س</div>
+              </div>
+              <div class="text-end">
+                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2 rounded-pill">
+                  <i class="ti ti-check"></i> متاح للطلب الفوري
+                </span>
+              </div>
+            </div>
+
+            <!-- Brief Description -->
+            <div class="card bg-light border-0 p-3 mb-4 rounded-3">
+              <h6 class="fw-bold mb-2 text-dark"><i class="ti ti-info-circle text-primary me-1"></i> وصف مختصر للخدمة:</h6>
+              <p class="text-muted small m-0 leading-relaxed">
+                استفد من خدمة برمجة تطبيقات الأندرويد وiOS الاحترافية لتحويل رؤيتك إلى تطبيق واقعي وملموس. نقدم تطويرًا مخصصًا، وتجربة مستخدم استثنائية، وأداءً فائق الاستقرار، ودعمًا تقنيًا مستمرًا.
+              </p>
+            </div>
+
+            <!-- Options Selection Dropdown -->
+            <div class="options-dropdown-group">
+              <label for="product-option-select">
+                <i class="ti ti-adjustments text-primary me-1"></i> اختار حجم مشروع التطبيق:
+              </label>
+              <select id="product-option-select" class="form-select form-select-lg">
+                <option value="0" data-price-yer="6000000" data-price-sar="15000" data-price-usd="4000" selected>
+                  تصميم تطبيق للمنشأت التجارية الصغيرة
+                </option>
+                <option value="1" data-price-yer="10000000" data-price-sar="25000" data-price-usd="6660">
+                  تصميم تطبيق للمنشأت التجارية المتوسطة
+                </option>
+                <option value="2" data-price-yer="20000000" data-price-sar="50000" data-price-usd="13330">
+                  تصميم تطبيق للمنشأت التجارية الكبيرة
+                </option>
+              </select>
+            </div>
+
+            <!-- Quantity Selector & WhatsApp Order Action Button -->
+            <div class="row g-3 align-items-center mb-3">
+              
+              <!-- Quantity -->
+              <div class="col-auto">
+                <div class="quantity-control">
+                  <button type="button" class="quantity-btn" onclick="updateQuantity(-1)"><i class="ti ti-minus"></i></button>
+                  <input type="text" id="product-quantity-input" class="quantity-input" value="1" readonly>
+                  <button type="button" class="quantity-btn" onclick="updateQuantity(1)"><i class="ti ti-plus"></i></button>
+                </div>
+              </div>
+
+              <!-- Primary WhatsApp Order Button -->
+              <div class="col">
+                <a id="btn-submit-order-whatsapp" href="#" target="_blank" class="btn-whatsapp-order">
+                  <i class="ti ti-brand-whatsapp fs-4"></i>
+                  <span>اطلب الآن عبر الواتساب</span>
+                </a>
+              </div>
+
+            </div>
+
+            <!-- Inquire Secondary Button -->
+            <a id="btn-inquire-whatsapp" href="#" target="_blank" class="btn-whatsapp-inquire">
+              <i class="ti ti-message-dots text-primary"></i>
+              <span>هل لديك استفسار خاص قبل الطلب؟ تحدث معنا</span>
+            </a>
+
+            <!-- Payment Methods Info -->
+            <div class="payment-methods-row">
+              <span class="small text-muted fw-bold me-2">طرق الدفع المتوفرة:</span>
+              <span class="payment-badge" title="Apple Pay"><img src="https://media.zid.store/static/apple_pay.svg" alt="Apple Pay"></span>
+              <span class="payment-badge" title="مدى"><img src="https://media.zid.store/static/mada-circle.png" alt="مدى"></span>
+              <span class="payment-badge" title="Visa"><img src="https://media.zid.store/static/visa-circle.png" alt="Visa"></span>
+              <span class="payment-badge" title="Mastercard"><img src="https://media.zid.store/static/mastercard-circle.png" alt="Mastercard"></span>
+              <span class="payment-badge" title="تحويل بنكي"><img src="https://media.zid.store/static/bankTransfer.png" alt="تحويل بنكي"></span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Lower Tabs Section: Details, Full Description, Reviews -->
+      <div class="product-tabs-wrapper">
+        <ul class="nav nav-tabs" id="productDetailTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-content" type="button" role="tab">
+              <i class="ti ti-list-details me-1"></i> التفاصيل
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="description-tab" data-bs-toggle="tab" data-bs-target="#description-content" type="button" role="tab">
+              <i class="ti ti-file-text me-1"></i> الوصف الكامل للخدمة
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="guarantee-tab" data-bs-toggle="tab" data-bs-target="#guarantee-content" type="button" role="tab">
+              <i class="ti ti-shield-check me-1"></i> الضمان والدعم الفني
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content shadow-sm" id="productDetailTabsContent">
+          
+          <!-- Tab 1: Details -->
+          <div class="tab-pane fade show active" id="details-content" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <h5 class="fw-bold mb-3 text-primary">ما الذي يتضمنه تطوير التطبيق؟</h5>
+                <ul class="list-unstyled d-flex flex-column gap-2">
+                  <li><i class="ti ti-check text-success me-2"></i> بناء نسخة أصلية (Native / Flutter) تعمل على نظامي Android و iOS.</li>
+                  <li><i class="ti ti-check text-success me-2"></i> لوحة تحكم إدارية سحابية سهلة لإدارة محتوى التطبيق والطلبات.</li>
+                  <li><i class="ti ti-check text-success me-2"></i> ربط بوابات الدفع الإلكتروني (Apple Pay, مدى, البطاقات الائتمانية).</li>
+                  <li><i class="ti ti-check text-success me-2"></i> نظام الإشعارات الفورية (Push Notifications) لجذب وتفاعل العملاء.</li>
+                  <li><i class="ti ti-check text-success me-2"></i> رفع التطبيق وتجهيزه للنشر في متجر Google Play ومتجر Apple App Store.</li>
+                </ul>
+              </div>
+              <div class="col-md-6 border-start-md">
+                <h5 class="fw-bold mb-3 text-primary">مراحل العمل والتسليم</h5>
+                <ol class="d-flex flex-column gap-2 pe-3 text-muted">
+                  <li><strong>تحليل المتطلبات وتخطيط واجهات المستخدم UI/UX:</strong> تصميم بروتوتايب تفاعلي.</li>
+                  <li><strong>مرحلة البرمجة والتطوير:</strong> بناء الواجهات وقواعد البيانات وربط الـ APIs.</li>
+                  <li><strong>مرحلة الفحص وتأكيد الجودة (QA):</strong> اختبار الأداء والأمان على مختلف الأجهزة.</li>
+                  <li><strong>الإطلاق والتدريب:</strong> رفع التطبيقات وتدريب فريقك على لوحة التحكم.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Full Description -->
+          <div class="tab-pane fade" id="description-content" role="tabpanel">
+            <div class="p-2">
+              <p class="fs-6 leading-relaxed">
+                استعد للانطلاق في عالم التكنولوجيا المتقدمة مع خدمة برمجة تطبيقات الأندرويد و iOS الاحترافية. سواء كنت ترغب في تطوير تطبيق لعملك التجاري أو إطلاق فكرة ناشئة جديدة، فإن فريقنا البرمجي المتخصص في <strong>رسومات الرقمية</strong> جاهز لتحويل رؤيتك إلى حقيقة ملموسة وناجحة.
+              </p>
+
+              <div class="my-4 p-3 rounded" style="background-color: #ce0000; color: #ffffff;">
+                <h4 class="fw-bold m-0 text-white">مميزات طلب خدمة إنشاء تطبيق أندرويد و IOS من رسومات</h4>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="card border p-3 h-100">
+                    <h6 class="fw-bold text-primary mb-2"><i class="ti ti-devices me-1"></i> التوافق الشامل مع أندرويد و iOS</h6>
+                    <p class="small text-muted m-0">وفر لجمهورك وعملائك سهولة وسرعة الوصول إلى خدماتك من أي هاتف ذكي أو جهاز لوحي بكفاءة تامة.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card border p-3 h-100">
+                    <h6 class="fw-bold text-primary mb-2"><i class="ti ti-sparkles me-1"></i> تجربة مستخدم استثنائية UI/UX</h6>
+                    <p class="small text-muted m-0">واجهات بصرية عصرية جذابة وسهلة التصفح والاستخدام، مع تناسق كامل مع الهوية المؤسسية لمشروعك.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card border p-3 h-100">
+                    <h6 class="fw-bold text-primary mb-2"><i class="ti ti-bolt me-1"></i> أداء ممتاز وسرعة فائقة</h6>
+                    <p class="small text-muted m-0">ضمان سرعة التحميل والاستجابة السلسة، مع تحسين الأكواد البرمجية لتفادي أي بطء أو أخطاء برمجية.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card border p-3 h-100">
+                    <h6 class="fw-bold text-primary mb-2"><i class="ti ti-headset me-1"></i> دعم فني وصيانة مستمرة</h6>
+                    <p class="small text-muted m-0">دعم متواصل وصيانة دورية بعد الإطلاق لضمان مواكبة أحدث تحديثات أنظمة تشغيل Apple و Google.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Guarantee -->
+          <div class="tab-pane fade" id="guarantee-content" role="tabpanel">
+            <div class="p-2">
+              <h5 class="fw-bold text-primary mb-3">ضمان رسومات الرقمية</h5>
+              <p class="text-muted">
+                نلتزم في رسومات الرقمية بتقديم أعلى معايير الجودة البرمجية والتصميمية. تشمل باقاتنا:
+              </p>
+              <ul class="text-muted d-flex flex-column gap-2">
+                <li>ضمان لمدة 6 أشهر لمعالجة أي أخطاء برمجية دون أي تكلفة إضافية.</li>
+                <li>تدريب كامل لفريق عملك على استخدام لوحة التحكم وإدارة المحتوى.</li>
+                <li>توفير نسخ احتياطية دورية وسيرفرات ذات حماية عالية واستقرار دائم.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Currency Switcher Modal (YER, SAR, USD) -->
+  <div class="modal fade" id="currencyModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="ti ti-coins text-primary"></i> اختيار عملة العرض</h5>
+          <button type="button" class="btn-close m-0" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="list-group gap-2">
+            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between p-3 rounded" onclick="changeCurrency('YER')">
+              <span class="fw-bold"><i class="ti ti-cash text-success fs-5 me-2"></i> ريال يمني (YER)</span>
+              <span class="badge bg-primary bg-opacity-10 text-primary">ر.ي</span>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between p-3 rounded" onclick="changeCurrency('SAR')">
+              <span class="fw-bold"><i class="ti ti-cash-banknote text-success fs-5 me-2"></i> ريال سعودي (SAR)</span>
+              <span class="badge bg-primary bg-opacity-10 text-primary">ر.س</span>
+            </button>
+            <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between p-3 rounded" onclick="changeCurrency('USD')">
+              <span class="fw-bold"><i class="ti ti-currency-dollar text-success fs-5 me-2"></i> دولار أمريكي (USD)</span>
+              <span class="badge bg-primary bg-opacity-10 text-primary">$</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a id="floating-whatsapp-link" href="https://wa.me/966550463239" target="_blank" class="floating-whatsapp">
+    <div class="floating-whatsapp-text">راسلنا على الواتساب 👋</div>
+    <div class="floating-whatsapp-btn"><i class="ti ti-brand-whatsapp"></i></div>
+  </a>
+
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container text-center py-3 border-top">
+      <div class="text-muted small">جميع الحقوق محفوظة © 2026 رسومات الرقمية</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const ProductConfig = {
+      title: "برمجة تطبيقات الاندرويد و IOS",
+      sku: "R3",
+      whatsappNumber: "966550463239",
+      currentCurrency: localStorage.getItem('rosomat_currency') || 'SAR',
+      quantity: 1,
+      options: [
+        { name: "تصميم تطبيق للمنشأت التجارية الصغيرة", price_yer: 6000000, price_sar: 15000, price_usd: 4000 },
+        { name: "تصميم تطبيق للمنشأت التجارية المتوسطة", price_yer: 10000000, price_sar: 25000, price_usd: 6660 },
+        { name: "تصميم تطبيق للمنشأت التجارية الكبيرة", price_yer: 20000000, price_sar: 50000, price_usd: 13330 }
+      ]
+    };
+
+    function switchProductImage(url, el) {
+      const main = document.getElementById('product-main-img');
+      if (main) {
+        main.style.opacity = '0.3';
+        setTimeout(() => {
+          main.src = url;
+          main.style.opacity = '1';
+        }, 150);
+      }
+      document.querySelectorAll('.product-thumb-item').forEach(item => item.classList.remove('active'));
+      if (el) el.classList.add('active');
+    }
+
+    function getCurrentOption() {
+      const select = document.getElementById('product-option-select');
+      const idx = parseInt(select.value) || 0;
+      return ProductConfig.options[idx] || ProductConfig.options[0];
+    }
+
+    function calculateTotalPrice() {
+      const opt = getCurrentOption();
+      let unitPrice = 0;
+      if (ProductConfig.currentCurrency === 'YER') unitPrice = opt.price_yer;
+      else if (ProductConfig.currentCurrency === 'SAR') unitPrice = opt.price_sar;
+      else if (ProductConfig.currentCurrency === 'USD') unitPrice = opt.price_usd;
+
+      return unitPrice * ProductConfig.quantity;
+    }
+
+    function formatCurrency(amount, currency) {
+      if (currency === 'YER') {
+        return Math.round(amount).toLocaleString('en-US') + ' ر.ي';
+      }
+      const formatted = Number(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      if (currency === 'USD') return '$' + formatted;
+      return formatted + ' ر.س';
+    }
+
+    function updateProductUI() {
+      const total = calculateTotalPrice();
+      const formatted = formatCurrency(total, ProductConfig.currentCurrency);
+      document.getElementById('dynamic-product-price').textContent = formatted;
+
+      document.querySelectorAll('.current-currency-text').forEach(el => {
+        el.textContent = ProductConfig.currentCurrency === 'YER' ? 'ريال يمني (YER)' : (ProductConfig.currentCurrency === 'SAR' ? 'ريال سعودي (SAR)' : 'دولار أمريكي (USD)');
+      });
+
+      const select = document.getElementById('product-option-select');
+      Array.from(select.options).forEach((optEl, i) => {
+        const item = ProductConfig.options[i];
+        if (item) {
+          let p = item.price_sar;
+          if (ProductConfig.currentCurrency === 'YER') p = item.price_yer;
+          else if (ProductConfig.currentCurrency === 'USD') p = item.price_usd;
+          optEl.text = item.name + ' (+' + formatCurrency(p, ProductConfig.currentCurrency) + ')';
+        }
+      });
+
+      updateWhatsAppLinks();
+    }
+
+    function updateWhatsAppLinks() {
+      const opt = getCurrentOption();
+      const total = calculateTotalPrice();
+      const formattedPrice = formatCurrency(total, ProductConfig.currentCurrency);
+      const pageUrl = window.location.href;
+
+      const orderMessage = 
+'مرحباً رسومات الرقمية 👋\n' +
+'أود طلب الخدمة التالية:\n' +
+'------------------------\n' +
+'📌 المنتج: ' + ProductConfig.title + '\n' +
+'🏷️ رمز المنتج (SKU): ' + ProductConfig.sku + '\n' +
+'⚙️ الخيار المطلوب: ' + opt.name + '\n' +
+'🔢 الكمية: ' + ProductConfig.quantity + '\n' +
+'💰 السعر الإجمالي: ' + formattedPrice + '\n' +
+'🔗 رابط الصفحة: ' + pageUrl + '\n' +
+'------------------------\n' +
+'أرجو تزويدي بتفاصيل تأكيد الطلب وخطوات البدء. شكراً لكم!';
+
+      const orderBtn = document.getElementById('btn-submit-order-whatsapp');
+      if (orderBtn) {
+        orderBtn.href = 'https://wa.me/' + ProductConfig.whatsappNumber + '?text=' + encodeURIComponent(orderMessage);
+      }
+
+      const inquireBtn = document.getElementById('btn-inquire-whatsapp');
+      if (inquireBtn) {
+        inquireBtn.href = 'https://wa.me/' + ProductConfig.whatsappNumber + '?text=' + encodeURIComponent('مرحباً، لدي استفسار حول: ' + ProductConfig.title + ' (' + pageUrl + ')');
+      }
+
+      const shareWa = document.getElementById('share-whatsapp');
+      if (shareWa) shareWa.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(ProductConfig.title + ' ' + pageUrl);
+
+      const shareTg = document.getElementById('share-telegram');
+      if (shareTg) shareTg.href = 'https://t.me/share/url?url=' + encodeURIComponent(pageUrl) + '&text=' + encodeURIComponent(ProductConfig.title);
+
+      const shareX = document.getElementById('share-x');
+      if (shareX) shareX.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(ProductConfig.title) + '&url=' + encodeURIComponent(pageUrl);
+
+      const shareFb = document.getElementById('share-facebook');
+      if (shareFb) shareFb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+    }
+
+    function updateQuantity(diff) {
+      let q = ProductConfig.quantity + diff;
+      if (q < 1) q = 1;
+      if (q > 99) q = 99;
+      ProductConfig.quantity = q;
+      document.getElementById('product-quantity-input').value = q;
+      updateProductUI();
+    }
+
+    function changeCurrency(curr) {
+      ProductConfig.currentCurrency = curr;
+      localStorage.setItem('rosomat_currency', curr);
+      updateProductUI();
+      const modalEl = document.getElementById('currencyModal');
+      if (modalEl && window.bootstrap && bootstrap.Modal) {
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        if (modal) modal.hide();
+      }
+    }
+
+    function copySku(sku) {
+      navigator.clipboard.writeText(sku).then(() => {
+        alert('تم نسخ رمز المنتج: ' + sku);
+      });
+    }
+
+    function copyPageUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('تم نسخ رابط المنتج بنجاح!');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('product-option-select').addEventListener('change', updateProductUI);
+      updateProductUI();
+    });
+  </script>
+</body>
+</html>

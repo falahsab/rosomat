@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>لوحة التحكم - إدارة المنتجات وتوليد الصفحات | رسومات الرقمية</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/8dce714f-9120-4a65-9638-e792d4561cf0-32x32.png" type="image/x-icon">
+  
+  <!-- Cairo Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+  
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  
+  <!-- Custom Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-header {
+      background: #ffffff;
+      border-bottom: 2px solid var(--primary);
+      padding: 16px 0;
+    }
+    .admin-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .admin-title {
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .code-preview-box {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.88rem;
+      border-radius: 10px;
+      padding: 16px;
+      max-height: 420px;
+      overflow: auto;
+      direction: ltr;
+      text-align: left;
+    }
+    .csv-row-box {
+      background: #f8f9fa;
+      border: 1px dashed var(--primary);
+      color: #212529;
+      font-family: Consolas, monospace;
+      padding: 14px;
+      border-radius: 8px;
+      direction: ltr;
+      text-align: left;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Admin Header -->
+  <header class="admin-header shadow-sm sticky-top">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://media.zid.store/cdn-cgi/image/w=200,q=100/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/404f05f8-2200-41f2-9848-4dcc76f08971-200x.png" alt="رسومات" height="42">
+        <div>
+          <h1 class="h5 fw-bold m-0 text-dark">لوحة تحكم المنتجات</h1>
+          <small class="text-muted">توليد صفحات HTML وإدارة ملف قاعدة بيانات الـ CSV (ريال يمني، سعودي، دولار)</small>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="index.html" class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
+          <i class="ti ti-building-store"></i>
+          <span>عرض المتجر</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container py-4">
+    
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-pills mb-4 gap-2" id="adminTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active fw-bold px-4 py-2" id="add-tab" data-bs-toggle="pill" data-bs-target="#tab-add" type="button" role="tab">
+          <i class="ti ti-plus"></i> إضافة منتج وتوليد الصفحة
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold px-4 py-2" id="csv-tab" data-bs-toggle="pill" data-bs-target="#tab-csv" type="button" role="tab">
+          <i class="ti ti-file-spreadsheet"></i> إدارة منتجات الـ CSV (<span id="csv-count-badge">0</span>)
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link fw-bold px-4 py-2" id="guide-tab" data-bs-toggle="pill" data-bs-target="#tab-guide" type="button" role="tab">
+          <i class="ti ti-help"></i> طريقة النشر على GitHub Pages
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="adminTabContent">
+      
+      <!-- Tab 1: Add Product Form & Code Generator -->
+      <div class="tab-pane fade show active" id="tab-add" role="tabpanel">
+        <div class="row g-4">
+          
+          <!-- Left: Input Form -->
+          <div class="col-12 col-xl-7">
+            <div class="admin-card">
+              <h2 class="h5 admin-title mb-4">
+                <i class="ti ti-edit text-primary fs-4"></i> بيانات المنتج الجديد
+              </h2>
+
+              <form id="product-form" onsubmit="handleGenerateProduct(event)">
+                
+                <!-- Title & Slug -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-7">
+                    <label class="form-label fw-bold">عنوان المنتج <span class="text-danger">*</span></label>
+                    <input type="text" id="p-title" class="form-control" placeholder="مثال: تصميم وتطوير متجر إلكتروني" required oninput="autoGenerateSlug(this.value)">
+                  </div>
+                  <div class="col-md-5">
+                    <label class="form-label fw-bold">اسم الرابط (Slug) <span class="text-danger">*</span></label>
+                    <input type="text" id="p-slug" class="form-control" placeholder="web-store-design" required dir="ltr">
+                    <small class="text-muted" style="font-size: 0.78rem;">سيصبح اسم الملف: <code>products/<span id="slug-hint">web-store-design</span>.html</code></small>
+                  </div>
+                </div>
+
+                <!-- Category, Brand & SKU -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-5">
+                    <label class="form-label fw-bold">التصنيف <span class="text-danger">*</span></label>
+                    <input type="text" id="p-category" list="categories-list" class="form-control" placeholder="اختر أو اكتب تصنيفاً..." required>
+                    <datalist id="categories-list">
+                      <option value="برمجة المواقع والتطبيقات">
+                      <option value="استخراج البيانات (داتا انتري)">
+                      <option value="رسيفرات وأجهزة استقبال">
+                      <option value="التسويق الرقمي">
+                      <option value="باقات رسومات">
+                      <option value="تصميم الجرافيك">
+                      <option value="خدمة العملاء">
+                    </datalist>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">الماركة / الشركة</label>
+                    <input type="text" id="p-brand" list="brands-list" class="form-control" placeholder="مثال: رسومات، ستار سات، تايجر، سيناتور...">
+                    <datalist id="brands-list">
+                      <option value="رسومات">
+                      <option value="ستار سات">
+                      <option value="تايجر">
+                      <option value="سيناتور">
+                    </datalist>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label fw-bold">رمز المنتج (SKU)</label>
+                    <input type="text" id="p-sku" class="form-control" placeholder="R20" value="R">
+                  </div>
+                </div>
+
+                <!-- 3 Currencies Prices: YER, SAR, USD -->
+                <div class="p-3 bg-light rounded-3 mb-3 border">
+                  <label class="form-label fw-bold text-primary mb-2">
+                    <i class="ti ti-coins"></i> السعر بالعملات الثلاث <span class="text-danger">*</span>
+                  </label>
+                  <div class="row g-2">
+                    <div class="col-md-4">
+                      <label class="form-label small fw-bold">ريال يمني (YER)</label>
+                      <div class="input-group">
+                        <input type="number" id="p-price-yer" step="any" min="0" class="form-control" placeholder="600000" required>
+                        <span class="input-group-text bg-white">ر.ي</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label small fw-bold">ريال سعودي (SAR)</label>
+                      <div class="input-group">
+                        <input type="number" id="p-price-sar" step="any" min="0" class="form-control" placeholder="1500" required oninput="autoCalculateCurrencies(this.value)">
+                        <span class="input-group-text bg-white">ر.س</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label small fw-bold">دولار أمريكي (USD)</label>
+                      <div class="input-group">
+                        <input type="number" id="p-price-usd" step="any" min="0" class="form-control" placeholder="400" required>
+                        <span class="input-group-text bg-white">$</span>
+                      </div>
+                    </div>
+                  </div>
+                  <small class="text-muted d-block mt-1">يتم احتساب الريال اليمني والدولار تلقائياً عند كتابة السعر بالريال السعودي، مع إمكانية تعديل أي عملة يدوياً.</small>
+                </div>
+
+                <!-- Image & Badge -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-8">
+                    <label class="form-label fw-bold">رابط الصورة الرئيسية <span class="text-danger">*</span></label>
+                    <input type="url" id="p-image" class="form-control" placeholder="https://..." value="https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png" required oninput="document.getElementById('img-preview').src=this.value;">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">الشارة (Badge)</label>
+                    <select id="p-badge" class="form-select">
+                      <option value="">بدون شارة</option>
+                      <option value="يباع سريعًا" selected>يباع سريعًا</option>
+                      <option value="الأكثر طلباً">الأكثر طلباً</option>
+                      <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
+                      <option value="جديد">جديد</option>
+                      <option value="عرض خاص">عرض خاص</option>
+                      <option value="مميز">مميز</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Additional Gallery Images -->
+                <div class="mb-3">
+                  <label class="form-label fw-bold">صور إضافية لمعرض المنتج (اختياري)</label>
+                  <textarea id="p-more-images" class="form-control" rows="2" placeholder="ضع روابط الصور الإضافية مفصولة بفواصل (,) أو فواصل منقوطة (;) أو كل رابط في سطر جديد..."></textarea>
+                  <small class="text-muted" style="font-size: 0.78rem;">تظهر في صفحة المنتج كصور مصغرة (Thumbnails) أسفل الصورة الرئيسية للتنقل التفاعلي بينها.</small>
+                </div>
+
+                <!-- Short Description -->
+                <div class="mb-3">
+                  <label class="form-label fw-bold">الوصف المختصر <span class="text-danger">*</span></label>
+                  <textarea id="p-short-desc" class="form-control" rows="2" placeholder="وصف موجز للمنتج يظهر في البطاقات ومقدمة الصفحة..." required></textarea>
+                </div>
+
+                <!-- Side-by-side: Full Description & Guarantee (HTML or text) -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">
+                      <i class="ti ti-file-text text-primary me-1"></i> تفاصيل ومميزات الخدمة (الوصف الكامل)
+                    </label>
+                    <textarea id="p-full-desc" class="form-control" rows="5" placeholder="اكتب هنا تفاصيل ومميزات المنتج الكاملة (يقبل نصاً عادياً أو وسوم HTML)..."></textarea>
+                    <small class="text-muted" style="font-size: 0.78rem;">يقبل إدخال نص عادي أو أكواد HTML لتنسيق القوائم والمميزات باحترافية.</small>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <label class="form-label fw-bold m-0">
+                        <i class="ti ti-shield-check text-primary me-1"></i> الضمان والدعم الفني
+                      </label>
+                      <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none" onclick="insertDefaultGuarantee()">
+                        <i class="ti ti-notes"></i> إدراج النص الافتراضي
+                      </button>
+                    </div>
+                    <textarea id="p-guarantee-desc" class="form-control" rows="5" placeholder="اتركه فارغاً لعرض الضمان الافتراضي، أو اكتب نصاً أو كود HTML مخصصاً..."></textarea>
+                    <small class="text-muted" style="font-size: 0.78rem;">يقبل نص عادي أو HTML. إذا ترك فارغاً سيتم إدراج الضمان الافتراضي المعتمد تلقائياً.</small>
+                  </div>
+                </div>
+
+                <!-- Options / Packages Section -->
+                <div class="mb-3 p-3 border rounded-3 bg-light">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="form-label fw-bold m-0"><i class="ti ti-layers text-primary"></i> خيارات وباقات المنتج (اختياري)</label>
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="addOptionRow()">
+                      <i class="ti ti-plus"></i> إضافة خيار / باقة
+                    </button>
+                  </div>
+                  <p class="small text-muted mb-2">إذا كان المنتج يحتوي على باقات أو خيارات، حدد عنوان القسم وأضفها بالأسعار. <strong>إذا تركت الخيارات فارغة، لن يظهر صندوق الخيارات نهائياً في صفحة المنتج</strong> وسيتم الطلب بالسعر الأساسي مباشرة.</p>
+                  
+                  <div class="mb-2">
+                    <label class="form-label small fw-bold">عنوان قسم الخيارات في الصفحة:</label>
+                    <input type="text" id="p-options-title" class="form-control form-control-sm" placeholder="مثال: اختر باقة أو خيار الخدمة: أو اختر موديل وسعة الرسيفر:">
+                  </div>
+
+                  <div id="options-container" class="d-flex flex-column gap-2">
+                    <!-- Dynamic option rows -->
+                  </div>
+                </div>
+
+                <!-- WhatsApp Receiving Number -->
+                <div class="mb-4">
+                  <label class="form-label fw-bold">رقم الواتساب لاستقبال طلبات هذا المنتج</label>
+                  <input type="text" id="p-whatsapp" class="form-control" value="966550463239" placeholder="966550463239" dir="ltr">
+                  <small class="text-muted">الصيغة الدولية بدون صفر أو إشارة + (مثال: 966550463239 أو 967xxxxxxxxx للرقم اليمني)</small>
+                </div>
+
+                <!-- Action Button -->
+                <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold py-3 shadow">
+                  <i class="ti ti-code"></i> توليد كود صفحة المنتج وإضافته للـ CSV
+                </button>
+
+              </form>
+            </div>
+          </div>
+
+          <!-- Right: Output & Generator Results -->
+          <div class="col-12 col-xl-5">
+            
+            <!-- Live Preview Card -->
+            <div class="admin-card">
+              <h2 class="h5 admin-title mb-3">
+                <i class="ti ti-eye text-primary"></i> معاينة سريعة للبطاقة
+              </h2>
+              <div class="p-3 border rounded-3 bg-light text-center" style="max-width: 280px; margin: 0 auto;">
+                <div style="position: relative; width: 100%; padding-top: 100%; background: #eee; border-radius: 8px; overflow: hidden;">
+                  <img id="img-preview" src="https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;" alt="">
+                </div>
+                <h6 id="card-preview-title" class="fw-bold mt-2 mb-1">عنوان المنتج</h6>
+                <div class="text-primary fw-bold fs-5" id="card-preview-price">1,500.00 ر.س</div>
+              </div>
+            </div>
+
+            <!-- Generated Code Section (Shown after generating) -->
+            <div class="admin-card" id="generated-output-card" style="display: none;">
+              <h2 class="h5 admin-title mb-3 text-success">
+                <i class="ti ti-circle-check fs-4"></i> تم توليد صفحة المنتج بنجاح!
+              </h2>
+              
+              <!-- Download & Copy Buttons -->
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <button type="button" class="btn btn-success fw-bold flex-grow-1" onclick="downloadProductHtml()">
+                  <i class="ti ti-download"></i> تحميل ملف <span id="download-filename">product.html</span>
+                </button>
+                <button type="button" class="btn btn-outline-secondary fw-bold" onclick="copyGeneratedCode()">
+                  <i class="ti ti-copy"></i> نسخ كود HTML
+                </button>
+                <button type="button" class="btn btn-outline-primary fw-bold" onclick="previewGeneratedHtml()">
+                  <i class="ti ti-external-link"></i> معاينة حية
+                </button>
+              </div>
+
+              <!-- File placement guide -->
+              <div class="alert alert-info py-2 px-3 small mb-3">
+                <i class="ti ti-folder-check"></i> ضع هذا الملف المحمّل داخل مجلد: <code>products/</code> في مشروعك.
+              </div>
+
+              <!-- HTML Code Viewer -->
+              <label class="form-label fw-bold small text-muted">كود HTML المتولد للصفحة:</label>
+              <div class="code-preview-box mb-3" id="code-preview-content"></div>
+
+              <!-- Generated CSV Row -->
+              <h6 class="fw-bold mt-4 mb-2"><i class="ti ti-file-text text-primary"></i> سطر الـ CSV المولد لقاعدة البيانات:</h6>
+              <div class="csv-row-box mb-2" id="csv-row-display"></div>
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-sm btn-outline-dark" onclick="copyCsvRow()">
+                  <i class="ti ti-copy"></i> نسخ سطر الـ CSV
+                </button>
+                <button type="button" class="btn btn-sm btn-primary" onclick="downloadUpdatedCSV()">
+                  <i class="ti ti-file-download"></i> تحميل ملف products.csv كاملاً
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tab 2: CSV Database Management -->
+      <div class="tab-pane fade" id="tab-csv" role="tabpanel">
+        <div class="admin-card">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+              <h2 class="h5 admin-title m-0">
+                <i class="ti ti-table text-primary fs-4"></i> المنتجات المحفوظة في قاعدة بيانات الـ CSV
+              </h2>
+              <small class="text-muted">هذه هي البيانات التي يتم جلبها وعرضها تلقائياً في صفحة المتجر الرئيسية (بالعملات الثلاث: يمني، سعودي، دولار)</small>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-outline-secondary btn-sm" onclick="reloadCsvFromDataFolder()">
+                <i class="ti ti-refresh"></i> إعادة تحميل
+              </button>
+              <button type="button" class="btn btn-success btn-sm fw-bold" onclick="downloadUpdatedCSV()">
+                <i class="ti ti-download"></i> تحميل ملف products.csv المحدث
+              </button>
+            </div>
+          </div>
+
+          <!-- Table of CSV products -->
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle" id="csv-table">
+              <thead class="table-light">
+                <tr>
+                  <th style="width: 50px;">#</th>
+                  <th style="width: 70px;">الصورة</th>
+                  <th>اسم المنتج</th>
+                  <th>التصنيف</th>
+                  <th>الماركة</th>
+                  <th>السعر (ر.ي)</th>
+                  <th>السعر (ر.س)</th>
+                  <th>السعر ($)</th>
+                  <th>الرابط</th>
+                  <th style="width: 100px;">إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="csv-table-body">
+                <!-- Populated dynamically by admin.js -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tab 3: GitHub Pages Deployment Guide -->
+      <div class="tab-pane fade" id="tab-guide" role="tabpanel">
+        <div class="admin-card">
+          <h2 class="h5 admin-title mb-4">
+            <i class="ti ti-brand-github text-primary fs-4"></i> خطوات رفع المتجر على GitHub وتفعيل GitHub Pages
+          </h2>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card h-100 p-3 border">
+                <h6 class="fw-bold text-primary"><span class="badge bg-primary me-2">1</span> رفع المجلد إلى مستودع GitHub</h6>
+                <p class="small text-muted">قم بإنشاء مستودع جديد (Repository) على حسابك في GitHub، ثم ارفع ملفات هذا المجلد:</p>
+                <div class="bg-dark text-white p-3 rounded small" dir="ltr">
+                  git init<br>
+                  git add .<br>
+                  git commit -m "Initial store deployment"<br>
+                  git branch -M main<br>
+                  git remote add origin https://github.com/USERNAME/REPO_NAME.git<br>
+                  git push -u origin main
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card h-100 p-3 border">
+                <h6 class="fw-bold text-primary"><span class="badge bg-primary me-2">2</span> تفعيل الاستضافة المجانية (GitHub Pages)</h6>
+                <ol class="small text-muted d-flex flex-column gap-2 pe-3">
+                  <li>ادخل على صفحة المستودع في GitHub.</li>
+                  <li>انقر على تبويب <strong>Settings</strong> في الأعلى.</li>
+                  <li>من القائمة الجانبية اختر <strong>Pages</strong>.</li>
+                  <li>تحت قسم <strong>Build and deployment</strong>:
+                    <ul>
+                      <li>اختر Source: <strong>Deploy from a branch</strong></li>
+                      <li>اختر الفرع: <strong>main</strong> ثم مجلد: <strong>/(root)</strong></li>
+                    </ul>
+                  </li>
+                  <li>اضغط <strong>Save</strong>.</li>
+                  <li>خلال دقيقة واحدة سيكون متجرك متاحاً عالمياً برابط مثل: <br><code>https://USERNAME.github.io/REPO_NAME/</code></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Offline Data Carrier (Ensures data displays when opening via file:/// directly) -->
+  <script src="data/products-data.js"></script>
+
+  <!-- Admin JS Engine -->
+  <script src="js/admin.js"></script>
+</body>
+</html>
