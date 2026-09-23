@@ -140,21 +140,32 @@
                   </div>
                 </div>
 
-                <!-- Category & SKU -->
+                <!-- Category, Brand & SKU -->
                 <div class="row g-3 mb-3">
-                  <div class="col-md-7">
+                  <div class="col-md-5">
                     <label class="form-label fw-bold">التصنيف <span class="text-danger">*</span></label>
-                    <input type="text" id="p-category" list="categories-list" class="form-control" placeholder="اختر أو اكتب تصنيفاً جديداً..." required>
+                    <input type="text" id="p-category" list="categories-list" class="form-control" placeholder="اختر أو اكتب تصنيفاً..." required>
                     <datalist id="categories-list">
                       <option value="برمجة المواقع والتطبيقات">
                       <option value="استخراج البيانات (داتا انتري)">
+                      <option value="رسيفرات وأجهزة استقبال">
                       <option value="التسويق الرقمي">
                       <option value="باقات رسومات">
                       <option value="تصميم الجرافيك">
                       <option value="خدمة العملاء">
                     </datalist>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">الماركة / الشركة</label>
+                    <input type="text" id="p-brand" list="brands-list" class="form-control" placeholder="مثال: رسومات، ستار سات، تايجر، سيناتور...">
+                    <datalist id="brands-list">
+                      <option value="رسومات">
+                      <option value="ستار سات">
+                      <option value="تايجر">
+                      <option value="سيناتور">
+                    </datalist>
+                  </div>
+                  <div class="col-md-3">
                     <label class="form-label fw-bold">رمز المنتج (SKU)</label>
                     <input type="text" id="p-sku" class="form-control" placeholder="R20" value="R">
                   </div>
@@ -194,7 +205,7 @@
                 <!-- Image & Badge -->
                 <div class="row g-3 mb-3">
                   <div class="col-md-8">
-                    <label class="form-label fw-bold">رابط صورة المنتج <span class="text-danger">*</span></label>
+                    <label class="form-label fw-bold">رابط الصورة الرئيسية <span class="text-danger">*</span></label>
                     <input type="url" id="p-image" class="form-control" placeholder="https://..." value="https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png" required oninput="document.getElementById('img-preview').src=this.value;">
                   </div>
                   <div class="col-md-4">
@@ -203,11 +214,19 @@
                       <option value="">بدون شارة</option>
                       <option value="يباع سريعًا" selected>يباع سريعًا</option>
                       <option value="الأكثر طلباً">الأكثر طلباً</option>
+                      <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
                       <option value="جديد">جديد</option>
-                      <option value="عرض حصري">عرض حصري</option>
-                      <option value="خصم خاص">خصم خاص</option>
+                      <option value="عرض خاص">عرض خاص</option>
+                      <option value="مميز">مميز</option>
                     </select>
                   </div>
+                </div>
+
+                <!-- Additional Gallery Images -->
+                <div class="mb-3">
+                  <label class="form-label fw-bold">صور إضافية لمعرض المنتج (اختياري)</label>
+                  <textarea id="p-more-images" class="form-control" rows="2" placeholder="ضع روابط الصور الإضافية مفصولة بفواصل (,) أو فواصل منقوطة (;) أو كل رابط في سطر جديد..."></textarea>
+                  <small class="text-muted" style="font-size: 0.78rem;">تظهر في صفحة المنتج كصور مصغرة (Thumbnails) أسفل الصورة الرئيسية للتنقل التفاعلي بينها.</small>
                 </div>
 
                 <!-- Short Description -->
@@ -216,24 +235,27 @@
                   <textarea id="p-short-desc" class="form-control" rows="2" placeholder="وصف موجز للمنتج يظهر في البطاقات ومقدمة الصفحة..." required></textarea>
                 </div>
 
-                <!-- Full Description -->
-                <div class="mb-3">
-                  <label class="form-label fw-bold">تفاصيل ومميزات المنتج الكاملة (HTML / نص مخصص)</label>
-                  <textarea id="p-full-desc" class="form-control" rows="4" placeholder="اكتب هنا تفاصيل الخدمة، المميزات، مراحل التسليم..."></textarea>
-                </div>
-
-                <!-- Guarantee & Support Description -->
-                <div class="mb-3">
-                  <div class="d-flex justify-content-between align-items-center mb-1">
-                    <label class="form-label fw-bold m-0">
-                      <i class="ti ti-shield-check text-primary me-1"></i> الضمان والدعم الفني (اختياري)
+                <!-- Side-by-side: Full Description & Guarantee (HTML or text) -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">
+                      <i class="ti ti-file-text text-primary me-1"></i> تفاصيل ومميزات الخدمة (الوصف الكامل)
                     </label>
-                    <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none" onclick="insertDefaultGuarantee()">
-                      <i class="ti ti-notes"></i> إدراج النص الافتراضي
-                    </button>
+                    <textarea id="p-full-desc" class="form-control" rows="5" placeholder="اكتب هنا تفاصيل ومميزات المنتج الكاملة (يقبل نصاً عادياً أو وسوم HTML)..."></textarea>
+                    <small class="text-muted" style="font-size: 0.78rem;">يقبل إدخال نص عادي أو أكواد HTML لتنسيق القوائم والمميزات باحترافية.</small>
                   </div>
-                  <textarea id="p-guarantee-desc" class="form-control" rows="3" placeholder="اتركه فارغاً لعرض الضمان الافتراضي المعتمد للمتجر، أو اكتب هنا بنود الضمان الخاصة بهذا المنتج..."></textarea>
-                  <small class="text-muted" style="font-size: 0.8rem;">في حال تركه فارغاً، سيتم تلقائياً تضمين بنود الضمان الافتراضية لرسومات الرقمية في صفحة المنتج.</small>
+                  <div class="col-md-6">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <label class="form-label fw-bold m-0">
+                        <i class="ti ti-shield-check text-primary me-1"></i> الضمان والدعم الفني
+                      </label>
+                      <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none" onclick="insertDefaultGuarantee()">
+                        <i class="ti ti-notes"></i> إدراج النص الافتراضي
+                      </button>
+                    </div>
+                    <textarea id="p-guarantee-desc" class="form-control" rows="5" placeholder="اتركه فارغاً لعرض الضمان الافتراضي، أو اكتب نصاً أو كود HTML مخصصاً..."></textarea>
+                    <small class="text-muted" style="font-size: 0.78rem;">يقبل نص عادي أو HTML. إذا ترك فارغاً سيتم إدراج الضمان الافتراضي المعتمد تلقائياً.</small>
+                  </div>
                 </div>
 
                 <!-- Options / Packages Section -->
@@ -241,11 +263,16 @@
                   <div class="d-flex justify-content-between align-items-center mb-2">
                     <label class="form-label fw-bold m-0"><i class="ti ti-layers text-primary"></i> خيارات وباقات المنتج (اختياري)</label>
                     <button type="button" class="btn btn-sm btn-outline-primary" onclick="addOptionRow()">
-                      <i class="ti ti-plus"></i> إضافة خيار
+                      <i class="ti ti-plus"></i> إضافة خيار / باقة
                     </button>
                   </div>
-                  <p class="small text-muted mb-2">إذا كان المنتج يحتوي على باقات (مثل: باقة صغيرة، باقة متقدمة)، أضفها هنا مع السعر بالعملات الثلاث:</p>
+                  <p class="small text-muted mb-2">إذا كان المنتج يحتوي على باقات أو خيارات، حدد عنوان القسم وأضفها بالأسعار. <strong>إذا تركت الخيارات فارغة، لن يظهر صندوق الخيارات نهائياً في صفحة المنتج</strong> وسيتم الطلب بالسعر الأساسي مباشرة.</p>
                   
+                  <div class="mb-2">
+                    <label class="form-label small fw-bold">عنوان قسم الخيارات في الصفحة:</label>
+                    <input type="text" id="p-options-title" class="form-control form-control-sm" placeholder="مثال: اختر باقة أو خيار الخدمة: أو اختر موديل وسعة الرسيفر:">
+                  </div>
+
                   <div id="options-container" class="d-flex flex-column gap-2">
                     <!-- Dynamic option rows -->
                   </div>
@@ -361,6 +388,7 @@
                   <th style="width: 70px;">الصورة</th>
                   <th>اسم المنتج</th>
                   <th>التصنيف</th>
+                  <th>الماركة</th>
                   <th>السعر (ر.ي)</th>
                   <th>السعر (ر.س)</th>
                   <th>السعر ($)</th>
