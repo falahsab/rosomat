@@ -89,26 +89,37 @@
       <a class="category-link" onclick="setCategory('التسويق الرقمي')">التسويق الرقمي</a>
       <a class="category-link" onclick="setCategory('باقات رسومات')">باقات رسومات</a>
       <a class="category-link" onclick="setCategory('تصميم الجرافيك')">تصميم الجرافيك</a>
+      <a class="category-link" onclick="setCategory('رسيفرات وأجهزة استقبال')">رسيفرات وأجهزة استقبال</a>
     </div>
   </nav>
 
   <!-- Page Hero Banner -->
   <section class="page-hero-banner">
     <div class="container">
-      <h1 class="page-hero-title">جميع المنتجات</h1>
-      <p class="page-hero-subtitle">تصفح واطلب حلول وخدمات رسومات الرقمية المتكاملة مع إمكانية الدفع والطلب عبر الواتساب</p>
+      <h1 class="page-hero-title">جميع المنتجات والخدمات</h1>
+      <p class="page-hero-subtitle">تصفح واطلب حلول وخدمات رسومات الرقمية وأجهزة الاستقبال مع إمكانية الدفع والطلب المباشر عبر الواتساب</p>
     </div>
   </section>
 
   <!-- Filter & Sort Toolbar -->
   <section class="filter-toolbar">
-    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
       
       <!-- Search within Page -->
-      <div class="col-12 col-md-4 col-lg-3">
+      <div class="col-12 col-md-3">
         <div class="input-group input-group-sm">
           <span class="input-group-text bg-white"><i class="ti ti-search text-muted"></i></span>
-          <input type="search" id="page-search-input" class="form-control" placeholder="فلترة سريعة بالاسم أو الرمز...">
+          <input type="search" id="page-search-input" class="form-control" placeholder="بحث بالاسم أو الماركة...">
+        </div>
+      </div>
+
+      <!-- Brand Filter Dropdown -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <div class="input-group input-group-sm">
+          <label class="input-group-text bg-white" for="brand-filter-select"><i class="ti ti-tag text-primary me-1"></i>الماركة</label>
+          <select class="form-select" id="brand-filter-select">
+            <option value="all" selected>كل الماركات</option>
+          </select>
         </div>
       </div>
 
@@ -118,9 +129,9 @@
       </div>
 
       <!-- Sort Options & Grid Range -->
-      <div class="d-flex align-items-center gap-3 ms-auto">
+      <div class="d-flex align-items-center gap-2 ms-auto">
         <div class="input-group input-group-sm">
-          <label class="input-group-text" for="sort-select">ترتيب حسب</label>
+          <label class="input-group-text" for="sort-select">ترتيب</label>
           <select class="form-select" id="sort-select">
             <option value="default" selected>الافتراضي</option>
             <option value="latest">الأحدث أولاً</option>
@@ -132,7 +143,7 @@
         <!-- Grid column range slider (desktop only) -->
         <div class="d-none d-lg-flex align-items-center gap-2">
           <span class="small text-muted text-nowrap"><i class="ti ti-layout-grid"></i> العرض:</span>
-          <input type="range" class="form-range" id="grid-range-slider" min="2" max="6" value="4" style="width: 90px;" title="عدد الأعمدة">
+          <input type="range" class="form-range" id="grid-range-slider" min="2" max="6" value="4" style="width: 80px;" title="عدد الأعمدة">
         </div>
       </div>
 
