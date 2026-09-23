@@ -9,18 +9,23 @@ let lastGeneratedHtml = '';
 let lastGeneratedSlug = '';
 let lastGeneratedCsvRow = '';
 
-// Default Fallback Products (Matches data/products.csv)
+// Default Initial Products (Matches data/products.csv)
 const INITIAL_PRODUCTS = [
   {
     id: 1,
     title: "برمجة تطبيقات الاندرويد و IOS",
     slug: "Android-and-IOS-app-programming",
-    price_yer: 0,
-    price_sar: 0,
-    price_usd: 0,
+    price_yer: 6000000,
+    price_sar: 15000,
+    price_usd: 4000,
     category: "برمجة المواقع والتطبيقات",
+    brand: "رسومات",
     sku: "R3",
     image: "https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png",
+    images: [
+      "https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png",
+      "https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/ea716e10-befe-4a77-a7a8-e8ecf7172f6e.png"
+    ],
     badge: "يباع سريعًا",
     short_desc: "نقدم لك خبرتنا الواسعة في تطوير التطبيقات لنظامي التشغيل الأندرويد وiOS باستخدام أحدث التقنيات وأدوات التطوير المبتكرة.",
     options: [
@@ -28,6 +33,7 @@ const INITIAL_PRODUCTS = [
       { name: "تصميم تطبيق للمنشأت التجارية المتوسطة", price_yer: 10000000, price_sar: 25000, price_usd: 6660 },
       { name: "تصميم تطبيق للمنشأت التجارية الكبيرة", price_yer: 20000000, price_sar: 50000, price_usd: 13330 }
     ],
+    options_title: "اختر باقة أو خيار الخدمة:",
     url: "products/Android-and-IOS-app-programming.html"
   },
   {
@@ -38,8 +44,12 @@ const INITIAL_PRODUCTS = [
     price_sar: 150,
     price_usd: 40,
     category: "استخراج البيانات (داتا انتري)",
+    brand: "رسومات",
     sku: "R10",
     image: "https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/ea716e10-befe-4a77-a7a8-e8ecf7172f6e.png",
+    images: [
+      "https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/ea716e10-befe-4a77-a7a8-e8ecf7172f6e.png"
+    ],
     badge: "الأكثر طلباً",
     short_desc: "نوفر خدمة استخراج بيانات أرقام العملاء بدقة واحترافية مصنفة حسب النشاط والمدينة لزيادة مبيعاتك.",
     options: [
@@ -47,6 +57,7 @@ const INITIAL_PRODUCTS = [
       { name: "5,000 رقم عميل مستهدف", price_yer: 200000, price_sar: 500, price_usd: 133 },
       { name: "10,000 رقم عميل مستهدف", price_yer: 360000, price_sar: 900, price_usd: 240 }
     ],
+    options_title: "اختر باقة الأرقام المستهدفة:",
     url: "products/extract-customer-phone-data.html"
   },
   {
@@ -57,8 +68,12 @@ const INITIAL_PRODUCTS = [
     price_sar: 2500,
     price_usd: 665,
     category: "برمجة المواقع والتطبيقات",
+    brand: "رسومات",
     sku: "R4",
     image: "https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png",
+    images: [
+      "https://media.zid.store/cdn-cgi/image/fit=scale-down,width=500,height=500/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/844045b5-542f-4f13-8c74-22c10bae9e74.png"
+    ],
     badge: "عرض خاص",
     short_desc: "تصميم وتطوير موقع إلكتروني احترافي متجاوب مع جميع الأجهزة ومُهيأ لمحركات البحث وبلوحة تحكم سهلة.",
     options: [
@@ -66,7 +81,78 @@ const INITIAL_PRODUCTS = [
       { name: "موقع شركة متكامل (5-8 صفحات)", price_yer: 1800000, price_sar: 4500, price_usd: 1200 },
       { name: "متجر إلكتروني متكامل", price_yer: 3000000, price_sar: 7500, price_usd: 2000 }
     ],
+    options_title: "اختر باقة الموقع الإلكتروني:",
     url: "products/web-design-service.html"
+  },
+  {
+    id: 4,
+    title: "رسيفر ستار سات 4K فائق الوضوح مدمج واي فاي",
+    slug: "starsat-4k-receiver",
+    price_yer: 90000,
+    price_sar: 225,
+    price_usd: 60,
+    category: "رسيفرات وأجهزة استقبال",
+    brand: "ستار سات",
+    sku: "SAT-SR200",
+    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&auto=format&fit=crop&q=80"
+    ],
+    badge: "الأكثر مبيعاً",
+    short_desc: "رسيفر ستار سات فائق الدقة 4K مع واي فاي داخلي، يدعم الشيرينج وسيرفرات IPTV مع اشتراك مدمج وسرعة فائقة.",
+    options: [
+      { name: "الجهاز مع اشتراك سنة سيرفر فورايفر", price_yer: 90000, price_sar: 225, price_usd: 60 },
+      { name: "الجهاز مع اشتراك سنتين VIP شامل", price_yer: 140000, price_sar: 350, price_usd: 93 }
+    ],
+    options_title: "اختر مدة ونوع الاشتراك:",
+    url: "products/starsat-4k-receiver.html"
+  },
+  {
+    id: 5,
+    title: "رسيفر تايجر فول اتش دي T3000 ميني",
+    slug: "tiger-fhd-t3000-receiver",
+    price_yer: 60000,
+    price_sar: 150,
+    price_usd: 40,
+    category: "رسيفرات وأجهزة استقبال",
+    brand: "تايجر",
+    sku: "TIG-T3000",
+    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=500&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=80"
+    ],
+    badge: "جديد",
+    short_desc: "رسيفر تايجر ميني صغير الحجم يثبت خلف الشاشة، سريع وبدقة عالية مع ريموت تحكم بلوتوث وحساس عدسة خارجية.",
+    options: [],
+    options_title: "",
+    url: "products/tiger-fhd-t3000-receiver.html"
+  },
+  {
+    id: 6,
+    title: "رسيفر سيناتور برايم اندرويد كومبو",
+    slug: "senator-prime-android-combo",
+    price_yer: 120000,
+    price_sar: 300,
+    price_usd: 80,
+    category: "رسيفرات وأجهزة استقبال",
+    brand: "سيناتور",
+    sku: "SEN-PRIME",
+    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=80"
+    ],
+    badge: "مميز",
+    short_desc: "جهاز سيناتور بنظام أندرويد وستالايت، يدعم تحميل جميع تطبيقات البث واليوتيوب بدقة 4K مع أداء استثنائي.",
+    options: [
+      { name: "نسخة ذاكرة 16GB + رام 2GB", price_yer: 120000, price_sar: 300, price_usd: 80 },
+      { name: "نسخة ذاكرة 32GB + رام 4GB", price_yer: 160000, price_sar: 400, price_usd: 106 }
+    ],
+    options_title: "اختر سعة الذاكرة والرام:",
+    url: "products/senator-prime-android-combo.html"
   }
 ];
 
@@ -119,12 +205,24 @@ function parseCSV(text) {
     });
 
     let parsedOptions = [];
-    if (obj.options) {
+    if (obj.options && obj.options.trim()) {
       try {
         parsedOptions = JSON.parse(obj.options);
       } catch (e) {
         parsedOptions = [];
       }
+    }
+
+    let parsedImages = [];
+    if (obj.images && obj.images.trim()) {
+      if (obj.images.startsWith('[')) {
+        try { parsedImages = JSON.parse(obj.images); } catch(e) { parsedImages = []; }
+      } else {
+        parsedImages = obj.images.split(/[;,|]/).map(s => s.trim()).filter(Boolean);
+      }
+    }
+    if (!parsedImages.length && obj.image) {
+      parsedImages = [obj.image];
     }
 
     parsed.push({
@@ -135,11 +233,14 @@ function parseCSV(text) {
       price_sar: parseFloat(obj.price_sar) || 0,
       price_usd: parseFloat(obj.price_usd) || 0,
       category: obj.category || '',
+      brand: obj.brand || '',
       sku: obj.sku || '',
-      image: obj.image || '',
+      image: obj.image || (parsedImages[0] || ''),
+      images: parsedImages,
       badge: obj.badge || '',
       short_desc: obj.short_desc || '',
       options: parsedOptions,
+      options_title: obj.options_title || 'اختر باقة أو خيار الخدمة:',
       url: obj.url || `products/${obj.slug}.html`
     });
   }
@@ -149,7 +250,7 @@ function parseCSV(text) {
 
 // Convert current products list to valid CSV string
 function exportToCSV(products) {
-  const headers = ['id', 'title', 'slug', 'price_yer', 'price_sar', 'price_usd', 'category', 'sku', 'image', 'badge', 'short_desc', 'options', 'url'];
+  const headers = ['id', 'title', 'slug', 'price_yer', 'price_sar', 'price_usd', 'category', 'brand', 'sku', 'image', 'images', 'badge', 'short_desc', 'options', 'options_title', 'url'];
   const rows = [headers.join(',')];
 
   products.forEach(p => {
@@ -159,6 +260,8 @@ function exportToCSV(products) {
       return `"${s}"`;
     };
 
+    const imagesStr = Array.isArray(p.images) && p.images.length > 0 ? p.images.join(';') : (p.image || '');
+
     const row = [
       p.id,
       escapeCsv(p.title),
@@ -167,11 +270,14 @@ function exportToCSV(products) {
       p.price_sar,
       p.price_usd,
       escapeCsv(p.category),
+      escapeCsv(p.brand || ''),
       escapeCsv(p.sku),
       escapeCsv(p.image),
-      escapeCsv(p.badge),
+      escapeCsv(imagesStr),
+      escapeCsv(p.badge || ''),
       escapeCsv(p.short_desc),
       escapeCsv(JSON.stringify(p.options || [])),
+      escapeCsv(p.options_title || ''),
       escapeCsv(p.url || `products/${p.slug}.html`)
     ];
 
@@ -248,9 +354,9 @@ function insertDefaultGuarantee() {
   const gInput = document.getElementById('p-guarantee-desc');
   if (gInput) {
     gInput.value = 
-`- تسليم الخدمة بأعلى جودة واحترافية وفق الجدول الزمني المتفق عليه.
-- دعم فني وتعديلات مجانية لضمان رضاكم التام بنسبة 100%.
-- فواتير وسندات رسمية موثوقة لكافة الخدمات المقدمة.`;
+`- تسليم الخدمة أو المنتج بأعلى جودة واحترافية وفق المواصفات المحددة.
+- دعم فني متواصل وتحديثات واستجابة سريعة لأي استفسارات.
+- فواتير وسندات رسمية موثوقة تضمن حق العميل 100%.`;
   }
 }
 
@@ -261,15 +367,28 @@ function handleGenerateProduct(event) {
   const title = document.getElementById('p-title').value.trim();
   const slug = document.getElementById('p-slug').value.trim() || 'product-' + Date.now();
   const category = document.getElementById('p-category').value.trim() || 'عام';
+  const brand = document.getElementById('p-brand') ? document.getElementById('p-brand').value.trim() : '';
   const sku = document.getElementById('p-sku').value.trim() || 'R' + Math.floor(Math.random() * 90 + 10);
   const price_sar = parseFloat(document.getElementById('p-price-sar').value) || 0;
   const price_yer = parseFloat(document.getElementById('p-price-yer').value) || Math.round(price_sar * 400);
   const price_usd = parseFloat(document.getElementById('p-price-usd').value) || (price_sar * 0.266);
   const image = document.getElementById('p-image').value.trim() || 'https://via.placeholder.com/500x500.png?text=Rosomat';
+  const more_images_text = document.getElementById('p-more-images') ? document.getElementById('p-more-images').value.trim() : '';
+  
+  // Combine all images
+  const images = [image];
+  if (more_images_text) {
+    const extra = more_images_text.split(/[\n,;]/).map(s => s.trim()).filter(Boolean);
+    extra.forEach(url => {
+      if (url && !images.includes(url)) images.push(url);
+    });
+  }
+
   const badge = document.getElementById('p-badge').value;
   const short_desc = document.getElementById('p-short-desc').value.trim();
   const full_desc = document.getElementById('p-full-desc').value.trim() || `<p>${short_desc}</p>`;
   const guarantee_desc = document.getElementById('p-guarantee-desc') ? document.getElementById('p-guarantee-desc').value.trim() : '';
+  const options_title = document.getElementById('p-options-title') ? document.getElementById('p-options-title').value.trim() : '';
   const whatsapp = document.getElementById('p-whatsapp').value.trim() || '966550463239';
 
   // Collect options
@@ -284,15 +403,12 @@ function handleGenerateProduct(event) {
     }
   });
 
-  // If no options provided, provide default base option
-  if (options.length === 0) {
-    options.push({ name: 'الطلب الأساسي', price_yer, price_sar, price_usd });
-  }
+  // Notice: If options.length === 0, options remains empty [] per requirement #7!
 
   // Generate the HTML code for this product
   lastGeneratedSlug = slug;
   lastGeneratedHtml = generateStandaloneProductHtml({
-    title, slug, category, sku, price_yer, price_sar, price_usd, image, badge, short_desc, full_desc, guarantee: guarantee_desc, whatsapp, options
+    title, slug, category, brand, sku, price_yer, price_sar, price_usd, image, images, badge, short_desc, full_desc, guarantee: guarantee_desc, options_title, whatsapp, options
   });
 
   // Display Generated Code
@@ -311,11 +427,14 @@ function handleGenerateProduct(event) {
     price_sar,
     price_usd,
     category,
+    brand,
     sku,
     image,
+    images,
     badge,
     short_desc,
     options,
+    options_title,
     url: `products/${slug}.html`
   };
 
@@ -337,66 +456,102 @@ function handleGenerateProduct(event) {
     newProductObj.price_sar,
     newProductObj.price_usd,
     escapeCsv(newProductObj.category),
+    escapeCsv(newProductObj.brand || ''),
     escapeCsv(newProductObj.sku),
     escapeCsv(newProductObj.image),
+    escapeCsv(newProductObj.images.join(';')),
     escapeCsv(newProductObj.badge),
     escapeCsv(newProductObj.short_desc),
     escapeCsv(JSON.stringify(newProductObj.options)),
+    escapeCsv(newProductObj.options_title || ''),
     escapeCsv(newProductObj.url)
   ].join(',');
 
   document.getElementById('csv-row-display').textContent = lastGeneratedCsvRow;
 
-  // Persist to localStorage for immediate sync with index.html (especially when opened via file://)
+  // Persist to localStorage for immediate sync with index.html
   try {
     localStorage.setItem('rosomat_products_csv', exportToCSV(currentProductsList));
   } catch (e) {
     console.warn('localStorage save failed', e);
   }
 
-  // Refresh CSV Table
   renderCsvTable();
 }
 
-// Standalone Product HTML Generator Function
+// Generate Standalone, Zero-Dependency HTML Product Page Code
 function generateStandaloneProductHtml(data) {
-  const optionsHtml = data.options.map((opt, idx) => `
-                <option value="${idx}" data-price-yer="${opt.price_yer}" data-price-sar="${opt.price_sar}" data-price-usd="${opt.price_usd}" ${idx === 0 ? 'selected' : ''}>
-                  ${opt.name} (+${opt.price_sar.toLocaleString('en-US', {minimumFractionDigits:2})} ر.س)
-                </option>`).join('');
+  const hasOptions = data.options && data.options.length > 0;
+  const customOptionsTitle = data.options_title || 'اختر باقة أو خيار الخدمة:';
+  
+  let optionsHtml = '';
+  if (hasOptions) {
+    optionsHtml = data.options.map((opt, idx) => 
+      `<option value="${idx}">${opt.name} (+${opt.price_sar.toLocaleString('en-US', {minimumFractionDigits:2})} ر.س)</option>`
+    ).join('\n                ');
+  }
 
-  const optionsJson = JSON.stringify(data.options, null, 2);
+  // Multi-image thumbnails markup
+  const allImages = Array.isArray(data.images) && data.images.length > 0 ? data.images : [data.image];
+  let thumbnailsHtml = '';
+  if (allImages.length > 1) {
+    thumbnailsHtml = `
+            <div class="product-thumbnails-row">
+              ${allImages.map((imgUrl, i) => `
+                <div class="product-thumb-item ${i === 0 ? 'active' : ''}" onclick="switchProductImage('${imgUrl}', this)">
+                  <img src="${imgUrl}" alt="صورة ${i+1}">
+                </div>
+              `).join('')}
+            </div>`;
+  }
 
-  // Guarantee HTML generation: use custom input if provided, otherwise default
+  // Brand Badge
+  const brandBadgeHtml = data.brand ? `
+              <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2 py-1">
+                <i class="ti ti-tag"></i> الماركة: <strong>${data.brand}</strong>
+              </span>` : '';
+
+  // Options group HTML (Conditional per requirement #7!)
+  const optionsGroupHtml = hasOptions ? `
+            <!-- Options Selection Dropdown -->
+            <div class="options-dropdown-group" id="options-dropdown-container">
+              <label for="product-option-select">
+                <i class="ti ti-adjustments text-primary me-1"></i> ${customOptionsTitle}
+              </label>
+              <select id="product-option-select" class="form-select form-select-lg">
+                ${optionsHtml}
+              </select>
+            </div>` : '';
+
+  // Guarantee HTML block
   let guaranteeHtml = '';
   if (data.guarantee && data.guarantee.trim()) {
-    if (data.guarantee.includes('<') && data.guarantee.includes('>')) {
+    if (data.guarantee.trim().startsWith('<')) {
       guaranteeHtml = data.guarantee;
     } else {
-      const items = data.guarantee.split('\n').map(l => l.replace(/^[-*•]\s*/, '').trim()).filter(Boolean);
-      guaranteeHtml = `
-              <ul class="text-muted d-flex flex-column gap-2 p-0 pe-3">
-                ${items.map(item => `<li>${item}</li>`).join('\n                ')}
-              </ul>`;
+      const items = data.guarantee.split('\n').filter(line => line.trim());
+      guaranteeHtml = `<ul class="list-unstyled p-0 m-0">${items.map(it => `<li class="mb-2"><i class="ti ti-circle-check text-success me-2"></i> ${it.replace(/^[-*•]\s*/, '')}</li>`).join('')}</ul>`;
     }
   } else {
     guaranteeHtml = `
-              <ul class="text-muted d-flex flex-column gap-2 p-0 pe-3">
-                <li>تسليم الخدمة بأعلى جودة واحترافية وفق الجدول الزمني المتفق عليه.</li>
-                <li>دعم فني وتعديلات مجانية لضمان رضاكم التام بنسبة 100%.</li>
-                <li>فواتير وسندات رسمية موثوقة لكافة الخدمات المقدمة.</li>
-              </ul>`;
+      <ul class="list-unstyled p-0 m-0">
+        <li class="mb-2"><i class="ti ti-circle-check text-success me-2"></i> تسليم الخدمة بأعلى جودة واحترافية وفق الجدول الزمني المتفق عليه.</li>
+        <li class="mb-2"><i class="ti ti-circle-check text-success me-2"></i> دعم فني وتعديلات مجانية لضمان رضاكم التام بنسبة 100%.</li>
+        <li class="mb-2"><i class="ti ti-circle-check text-success me-2"></i> فواتير وسندات رسمية موثوقة لكافة الخدمات والمنتجات المقدمة.</li>
+      </ul>
+    `;
   }
 
-  return `<!doctype html>
-<html lang="ar" dir="rtl" class="h-100">
+  const optionsJson = JSON.stringify(data.options || []);
+
+  return `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${data.title} - اطلب الآن | رسومات الرقمية</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${data.title} | رسومات الرقمية</title>
   <meta name="description" content="${data.short_desc}">
   
-  <link rel="icon" href="https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/8dce714f-9120-4a65-9638-e792d4561cf0-32x32.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -410,7 +565,7 @@ function generateStandaloneProductHtml(data) {
   <div class="announcement-bar" id="announcementBar">
     <div class="container d-flex justify-content-between align-items-center">
       <div class="flex-grow-1 text-center">
-        <span>حكايتنا لم تنتهي بعد 🚀 | عروض حصرية على باقات رسومات الرقمية</span>
+        <span>حكايتنا لم تنتهي بعد 🚀 | عروض حصرية على باقات وأجهزة رسومات</span>
       </div>
       <span class="ti ti-x close-announcement fs-5" onclick="document.getElementById('announcementBar').style.display='none';"></span>
     </div>
@@ -418,7 +573,7 @@ function generateStandaloneProductHtml(data) {
 
   <!-- Header Navigation -->
   <header class="navbar-main sticky-top">
-    <div class="container d-flex justify-content-between align-items-center gap-3">
+    <div class="container d-flex justify-content-between align-items-center gap-2">
       <a class="navbar-brand m-0" href="../index.html">
         <img src="https://media.zid.store/cdn-cgi/image/w=200,q=100/https://media.zid.store/cdccfb2a-cf4a-40df-a8e8-308a199f021c/404f05f8-2200-41f2-9848-4dcc76f08971-200x.png" alt="رسومات الرقمية">
         <span>رسومات الرقمية</span>
@@ -429,7 +584,7 @@ function generateStandaloneProductHtml(data) {
         <span>العودة للمتجر</span>
       </a>
 
-      <div class="d-flex align-items-center gap-2">
+      <div class="d-flex align-items-center gap-2 header-actions">
         <button type="button" class="currency-badge" data-bs-toggle="modal" data-bs-target="#currencyModal">
           <i class="ti ti-coin"></i>
           <span class="current-currency-text">ريال سعودي (SAR)</span>
@@ -461,7 +616,8 @@ function generateStandaloneProductHtml(data) {
         <div class="col-12 col-lg-6 order-0 order-lg-1">
           <div class="product-gallery-box shadow-sm sticky-lg-top">
             ${data.badge ? `<span class="badge-tag hot" style="top: 18px; right: 18px; font-size: 0.85rem;"><i class="ti ti-star"></i> ${data.badge}</span>` : ''}
-            <img src="${data.image}" alt="${data.title}" onerror="this.src='https://via.placeholder.com/500x500.png?text=Rosomat';">
+            <img id="main-product-img" src="${allImages[0]}" alt="${data.title}" onerror="this.src='https://via.placeholder.com/500x500.png?text=Rosomat';">
+            ${thumbnailsHtml}
           </div>
         </div>
 
@@ -473,14 +629,15 @@ function generateStandaloneProductHtml(data) {
               <h1 class="product-page-title m-0">${data.title}</h1>
             </div>
 
-            <!-- SKU & Category -->
+            <!-- SKU, Category & Brand -->
             <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
               <span class="product-sku-badge">
                 <i class="ti ti-barcode"></i> رمز المنتج: <strong>${data.sku}</strong>
               </span>
               <span class="badge bg-light text-muted border">
-                <i class="ti ti-tag text-primary"></i> ${data.category}
+                <i class="ti ti-folder text-primary"></i> ${data.category}
               </span>
+              ${brandBadgeHtml}
             </div>
 
             <!-- Price Display Card -->
@@ -498,19 +655,11 @@ function generateStandaloneProductHtml(data) {
 
             <!-- Brief Description -->
             <div class="card bg-light border-0 p-3 mb-4 rounded-3">
-              <h6 class="fw-bold mb-2 text-dark"><i class="ti ti-info-circle text-primary me-1"></i> وصف مختصر للخدمة:</h6>
+              <h6 class="fw-bold mb-2 text-dark"><i class="ti ti-info-circle text-primary me-1"></i> وصف موجز:</h6>
               <p class="text-muted small m-0 leading-relaxed">${data.short_desc}</p>
             </div>
 
-            <!-- Options Selection Dropdown -->
-            <div class="options-dropdown-group">
-              <label for="product-option-select">
-                <i class="ti ti-adjustments text-primary me-1"></i> اختر باقة أو خيار الخدمة:
-              </label>
-              <select id="product-option-select" class="form-select form-select-lg">
-                ${optionsHtml}
-              </select>
-            </div>
+            ${optionsGroupHtml}
 
             <!-- Quantity & WhatsApp Action -->
             <div class="row g-3 align-items-center mb-3">
@@ -567,13 +716,13 @@ function generateStandaloneProductHtml(data) {
 
         <div class="tab-content shadow-sm" id="productDetailTabsContent">
           <div class="tab-pane fade show active" id="details-content">
-            <div class="p-2 leading-relaxed">
+            <div class="p-3 leading-relaxed">
               ${data.full_desc}
             </div>
           </div>
           <div class="tab-pane fade" id="guarantee-content">
-            <div class="p-2">
-              <h5 class="fw-bold text-primary mb-3">ضمان رسومات الرقمية</h5>
+            <div class="p-3">
+              <h5 class="fw-bold text-primary mb-3">ضمان الجودة والدعم الفني</h5>
               ${guaranteeHtml}
             </div>
           </div>
@@ -612,7 +761,7 @@ function generateStandaloneProductHtml(data) {
   </div>
 
   <!-- Floating WhatsApp -->
-  <a id="floating-whatsapp-link" href="https://wa.me/${data.whatsapp}" target="_blank" class="floating-whatsapp">
+  <a id="floating-whatsapp-link" href="https://wa.me/${data.whatsapp}" target="_blank" class="floating-whatsapp" title="تواصل عبر الواتساب">
     <div class="floating-whatsapp-text">راسلنا على الواتساب 👋</div>
     <div class="floating-whatsapp-btn"><i class="ti ti-brand-whatsapp"></i></div>
   </a>
@@ -629,74 +778,124 @@ function generateStandaloneProductHtml(data) {
     const ProductConfig = {
       title: ${JSON.stringify(data.title)},
       sku: ${JSON.stringify(data.sku)},
+      brand: ${JSON.stringify(data.brand || '')},
+      basePriceYer: ${data.price_yer},
+      basePriceSar: ${data.price_sar},
+      basePriceUsd: ${data.price_usd},
+      hasOptions: ${hasOptions},
       whatsappNumber: ${JSON.stringify(data.whatsapp)},
       currentCurrency: localStorage.getItem('rosomat_currency') || 'SAR',
       quantity: 1,
       options: ${optionsJson}
     };
 
+    function switchProductImage(url, el) {
+      const main = document.getElementById('main-product-img');
+      if (main) {
+        main.style.opacity = '0.3';
+        setTimeout(() => {
+          main.src = url;
+          main.style.opacity = '1';
+        }, 150);
+      }
+      document.querySelectorAll('.product-thumb-item').forEach(item => item.classList.remove('active'));
+      if (el) el.classList.add('active');
+    }
+
     function getCurrentOption() {
+      if (!ProductConfig.hasOptions || !ProductConfig.options || ProductConfig.options.length === 0) {
+        return null;
+      }
       const select = document.getElementById('product-option-select');
-      const idx = parseInt(select.value) || 0;
+      const idx = select ? (parseInt(select.value) || 0) : 0;
       return ProductConfig.options[idx] || ProductConfig.options[0];
     }
 
     function calculateTotalPrice() {
-      const opt = getCurrentOption();
       let unitPrice = 0;
-      if (ProductConfig.currentCurrency === 'YER') unitPrice = opt.price_yer;
-      else if (ProductConfig.currentCurrency === 'USD') unitPrice = opt.price_usd;
-      else unitPrice = opt.price_sar;
+      if (ProductConfig.hasOptions) {
+        const opt = getCurrentOption();
+        if (opt) {
+          if (ProductConfig.currentCurrency === 'YER') unitPrice = opt.price_yer;
+          else if (ProductConfig.currentCurrency === 'USD') unitPrice = opt.price_usd;
+          else unitPrice = opt.price_sar;
+        }
+      } else {
+        if (ProductConfig.currentCurrency === 'YER') unitPrice = ProductConfig.basePriceYer;
+        else if (ProductConfig.currentCurrency === 'USD') unitPrice = ProductConfig.basePriceUsd;
+        else unitPrice = ProductConfig.basePriceSar;
+      }
       return unitPrice * ProductConfig.quantity;
     }
 
     function formatCurrency(amount, currency) {
-      const formatted = Number(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      if (currency === 'USD') return '$' + formatted;
-      if (currency === 'YER') return formatted + ' ر.ي';
-      return formatted + ' ر.س';
+      if (currency === 'USD') {
+        return '$' + Number(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+      if (currency === 'YER') {
+        return Math.round(Number(amount)).toLocaleString('en-US') + ' ر.ي';
+      }
+      return Number(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ر.س';
     }
 
     function updateProductUI() {
       const total = calculateTotalPrice();
-      document.getElementById('dynamic-product-price').textContent = formatCurrency(total, ProductConfig.currentCurrency);
+      const priceDisplay = document.getElementById('dynamic-product-price');
+      if (priceDisplay) {
+        priceDisplay.textContent = formatCurrency(total, ProductConfig.currentCurrency);
+      }
 
       document.querySelectorAll('.current-currency-text').forEach(el => {
         el.textContent = ProductConfig.currentCurrency === 'YER' ? 'ريال يمني (YER)' : (ProductConfig.currentCurrency === 'USD' ? 'دولار أمريكي (USD)' : 'ريال سعودي (SAR)');
       });
 
-      const select = document.getElementById('product-option-select');
-      Array.from(select.options).forEach((optEl, i) => {
-        const item = ProductConfig.options[i];
-        if (item) {
-          let p = item.price_sar;
-          if (ProductConfig.currentCurrency === 'YER') p = item.price_yer;
-          else if (ProductConfig.currentCurrency === 'USD') p = item.price_usd;
-          optEl.text = item.name + ' (+' + formatCurrency(p, ProductConfig.currentCurrency) + ')';
+      if (ProductConfig.hasOptions) {
+        const select = document.getElementById('product-option-select');
+        if (select) {
+          Array.from(select.options).forEach((optEl, i) => {
+            const item = ProductConfig.options[i];
+            if (item) {
+              let p = item.price_sar;
+              if (ProductConfig.currentCurrency === 'YER') p = item.price_yer;
+              else if (ProductConfig.currentCurrency === 'USD') p = item.price_usd;
+              optEl.text = item.name + ' (+' + formatCurrency(p, ProductConfig.currentCurrency) + ')';
+            }
+          });
         }
-      });
+      }
 
       updateWhatsAppLinks();
     }
 
     function updateWhatsAppLinks() {
-      const opt = getCurrentOption();
       const total = calculateTotalPrice();
       const formattedPrice = formatCurrency(total, ProductConfig.currentCurrency);
       const pageUrl = window.location.href;
 
+      let optionLine = '';
+      if (ProductConfig.hasOptions) {
+        const opt = getCurrentOption();
+        if (opt) optionLine = '\\n⚙️ الخيار المطلوب: ' + opt.name;
+      }
+
+      let brandLine = '';
+      if (ProductConfig.brand) {
+        brandLine = '\\n🏢 الماركة: ' + ProductConfig.brand;
+      }
+
       const orderMessage = 
-'مرحباً رسومات الرقمية 👋\\n' +
-'أود طلب الخدمة التالية:\\n' +
+'مرحباً رسومات 👋\\n' +
+'أود طلب المنتج/الخدمة التالية:\\n' +
 '------------------------\\n' +
-'📌 المنتج: ' + ProductConfig.title + '\\n' +
-'🏷️ رمز المنتج (SKU): ' + ProductConfig.sku + '\\n' +
-'⚙️ الخيار المطلوب: ' + opt.name + '\\n' +
+'📌 اسم المنتج: ' + ProductConfig.title + '\\n' +
+'🏷️ رمز المنتج (SKU): ' + ProductConfig.sku +
+brandLine +
+optionLine + '\\n' +
 '🔢 الكمية: ' + ProductConfig.quantity + '\\n' +
 '💰 السعر الإجمالي: ' + formattedPrice + '\\n' +
 '🔗 رابط الصفحة: ' + pageUrl + '\\n' +
 '------------------------\\n' +
-'أرجو تزويدي بتفاصيل تأكيد الطلب وخطوات البدء. شكراً لكم!';
+'أرجو تزويدي بتفاصيل تأكيد الطلب. شكراً لكم!';
 
       const orderBtn = document.getElementById('btn-submit-order-whatsapp');
       if (orderBtn) {
@@ -705,7 +904,7 @@ function generateStandaloneProductHtml(data) {
 
       const inquireBtn = document.getElementById('btn-inquire-whatsapp');
       if (inquireBtn) {
-        inquireBtn.href = 'https://wa.me/' + ProductConfig.whatsappNumber + '?text=' + encodeURIComponent('مرحباً، لدي استفسار حول ' + ProductConfig.title + ' (' + pageUrl + ')');
+        inquireBtn.href = 'https://wa.me/' + ProductConfig.whatsappNumber + '?text=' + encodeURIComponent('مرحباً، لدي استفسار حول: ' + ProductConfig.title + ' (' + pageUrl + ')');
       }
     }
 
@@ -730,7 +929,10 @@ function generateStandaloneProductHtml(data) {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('product-option-select').addEventListener('change', updateProductUI);
+      if (ProductConfig.hasOptions) {
+        const select = document.getElementById('product-option-select');
+        if (select) select.addEventListener('change', updateProductUI);
+      }
       updateProductUI();
     });
   </script>
@@ -777,7 +979,7 @@ function copyCsvRow() {
 // Download Updated products.csv
 function downloadUpdatedCSV() {
   const csvContent = exportToCSV(currentProductsList);
-  const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8' }); // BOM for Excel Arabic support
+  const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = 'products.csv';
@@ -795,7 +997,7 @@ function renderCsvTable() {
   if (!tbody) return;
 
   if (currentProductsList.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="9" class="text-center py-4 text-muted">لا توجد منتجات مسجلة</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="10" class="text-center py-4 text-muted">لا توجد منتجات مسجلة</td></tr>';
     return;
   }
 
@@ -810,9 +1012,10 @@ function renderCsvTable() {
         <small class="text-muted">SKU: ${p.sku}</small>
       </td>
       <td><span class="badge bg-light text-dark border">${p.category}</span></td>
-      <td class="fw-bold text-success">${Number(p.price_yer).toLocaleString()} ر.ي</td>
-      <td class="fw-bold text-primary">${Number(p.price_sar).toLocaleString()} ر.س</td>
-      <td class="text-muted">$${Number(p.price_usd).toLocaleString()}</td>
+      <td><span class="badge bg-primary bg-opacity-10 text-primary border">${p.brand || 'عام'}</span></td>
+      <td class="fw-bold text-success">${Math.round(Number(p.price_yer)).toLocaleString()} ر.ي</td>
+      <td class="fw-bold text-primary">${Number(p.price_sar).toLocaleString('en-US', {minimumFractionDigits:2})} ر.س</td>
+      <td class="text-muted">$${Number(p.price_usd).toLocaleString('en-US', {minimumFractionDigits:2})}</td>
       <td><a href="${p.url}" target="_blank" class="small text-decoration-underline text-truncate d-inline-block" style="max-width: 140px;">${p.url}</a></td>
       <td>
         <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteProductFromCsv(${p.id})" title="حذف من الـ CSV">
